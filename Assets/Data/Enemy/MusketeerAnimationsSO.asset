@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fba48f4d829f047ae33b8f3f592301, type: 3}
+  m_Name: MusketeerAnimationsSO
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationsSO
+  idle: {fileID: 11400000, guid: c4b4d99f83105fb45bbbcfaeb30e8a05, type: 2}
+  jump: {fileID: 0}
+  fall: {fileID: 0}
+  land: {fileID: 0}
+  run: {fileID: 11400000, guid: 54f1b609b2553a44c824fe6e8a7c7903, type: 2}
+  throwball: {fileID: 11400000, guid: 55c440656bb1b9d4787131c3d9c86ce6, type: 2}
