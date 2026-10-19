@@ -8,6 +8,7 @@ public class EnemyContext
     public Transform firePoint;
     public ObjectPool<Projectile> projectilePool;
     public Transform target;
+    public float patrolOriginX;
 
     public bool HasTarget => target != null;
 
@@ -20,19 +21,32 @@ public class EnemyContext
     public bool IsTargetInRange =>
         HasTarget && DistanceToTarget <= enemyData.AttackRange;
 
+    public bool IsTargetDetected =>
+        HasTarget && Vector2.Distance(target.position, enemyTransform.position) <= enemyData.DetectionRange;
+
+    public bool IsTargetLost =>
+        !HasTarget || Vector2.Distance(target.position, enemyTransform.position) > enemyData.LoseRange;
+
     public void FaceTarget()
     {
         if (!HasTarget)
             return;
 
-        float angleY = DirectionToTarget > 0f ? 0f : 180f;
+        Face(DirectionToTarget);
+    }
+
+    public void Face(float direction)
+    {
+        float angleY = direction > 0f ? 0f : 180f;
         enemyTransform.rotation = Quaternion.Euler(0f, angleY, 0f);
     }
 
-    public void MoveHorizontal(float direction)
+    public void MoveHorizontal(float direction) => MoveHorizontal(direction, enemyData.MoveSpeed);
+
+    public void MoveHorizontal(float direction, float speed)
     {
         enemyBody.linearVelocity = new Vector2(
-            direction * enemyData.MoveSpeed,
+            direction * speed,
             enemyBody.linearVelocity.y
         );
     }

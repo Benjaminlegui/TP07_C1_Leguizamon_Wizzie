@@ -13,6 +13,12 @@ public class EnemyChaseState : State<EnemyContext>
 
     protected override void OnUpdate()
     {
+        if (context.IsTargetLost)
+        {
+            stateMachine.ChangeState(states.Patrol);
+            return;
+        }
+
         if (context.IsTargetInRange)
         {
             stateMachine.ChangeState(states.Shoot);

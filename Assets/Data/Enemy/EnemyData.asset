@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   maxHealth: 100
-  shootInterval: 2
+  moveSpeed: 2
+  attackRange: 5
+  shootInterval: 1
+  contactDamage: 10
+  contactDamageInterval: 1
+  deathEffect: {fileID: 5522721326401323209, guid: 1d2f716b98608a749bfe38f9857e6bde, type: 3}
+  dropPrefab: {fileID: 7749054521082965808, guid: ebb343801f3651a4fbfa35cd8dfe4049, type: 3}
+  dropChance: 0.3

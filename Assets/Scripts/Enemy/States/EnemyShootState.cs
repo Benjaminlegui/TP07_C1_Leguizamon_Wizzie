@@ -16,18 +16,15 @@ public class EnemyShootState : State<EnemyContext>
 
     protected override void OnEnter()
     {
-        shootTimer = context.enemyData.ShootInterval;
         context.MoveHorizontal(0f);
+        context.FaceTarget();
+
+        Fire();
+        shootTimer = context.enemyData.ShootInterval;
     }
 
     protected override void OnUpdate()
     {
-        if (!context.IsTargetInRange)
-        {
-            stateMachine.ChangeState(states.Chase);
-            return;
-        }
-
         context.FaceTarget();
 
         shootTimer -= Time.deltaTime;
@@ -35,8 +32,19 @@ public class EnemyShootState : State<EnemyContext>
         if (shootTimer > 0f)
             return;
 
-        shootTimer = context.enemyData.ShootInterval;
+        if (!context.IsTargetInRange)
+        {
+            stateMachine.ChangeState(states.Chase);
+            return;
+        }
+
         Fire();
+        shootTimer = context.enemyData.ShootInterval;
+    }
+
+    protected override void OnFixedUpdate()
+    {
+        context.MoveHorizontal(0f);
     }
 
     private void Fire()
