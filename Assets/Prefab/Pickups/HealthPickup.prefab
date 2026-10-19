@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2752464734561132316}
   - component: {fileID: 6064260686603122027}
-  - component: {fileID: 4726977747477694631}
   - component: {fileID: 7749054521082965808}
+  - component: {fileID: 6961130011977504266}
+  - component: {fileID: 1435711886328208032}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -83,8 +84,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.2, g: 0.9, b: 0.3, a: 1}
+  m_Sprite: {fileID: 5004897692914266044, guid: de99bf739ece5f04d84712782ca97721, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,8 +94,43 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &4726977747477694631
-CircleCollider2D:
+--- !u!114 &7749054521082965808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627311060858373557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557c57dcd8f9e894a968e6763bb3aa06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthPickup
+  healAmount: 25
+--- !u!95 &6961130011977504266
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627311060858373557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54d5f0d592893d44c9a068c7e17352df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1435711886328208032
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,18 +163,6 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &7749054521082965808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6627311060858373557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557c57dcd8f9e894a968e6763bb3aa06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthPickup
-  healAmount: 25
+  m_Offset: {x: -0.019842386, y: -0.07937014}
+  m_Size: {x: 0.5983317, y: 1.3920355}
+  m_Direction: 0

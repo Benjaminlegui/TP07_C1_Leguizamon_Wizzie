@@ -29,4 +29,4 @@ MonoBehaviour:
   contactDamageInterval: 1
   deathEffect: {fileID: 5522721326401323209, guid: 1d2f716b98608a749bfe38f9857e6bde, type: 3}
   dropPrefab: {fileID: 7749054521082965808, guid: ebb343801f3651a4fbfa35cd8dfe4049, type: 3}
-  dropChance: 0.3
+  dropChance: 1
