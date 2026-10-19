@@ -11,10 +11,15 @@ public class PlayerSO : ScriptableObject
     [SerializeField] private float jumpSpeed = 8f;
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float airControl = 0.8f;
+
+    [Header("Health")]
+    [SerializeField, Min(1)] private int maxHealth = 100;
+
+    [Header("Throw")]
+    [SerializeField, Min(0.01f)] private float throwFireTime = 0.5f;
+    [SerializeField, Min(0.01f)] private float throwClipReleaseTime = 0.5f;
     
     [Header("Movement")]
-    [SerializeField] private KeyCode moveUp = KeyCode.W;
-    [SerializeField] private KeyCode moveDown = KeyCode.S;
     [SerializeField] private KeyCode moveLeft = KeyCode.A;
     [SerializeField] private KeyCode moveRight = KeyCode.D;
     [SerializeField] private KeyCode jump = KeyCode.Space;
@@ -25,9 +30,12 @@ public class PlayerSO : ScriptableObject
     public float JumpSpeed => jumpSpeed;
     public float MoveSpeed => moveSpeed;
     public float AirControl => airControl;
+
+    public int MaxHealth => maxHealth;
+
+    public float ThrowFireTime => throwFireTime;
+    public float ThrowClipReleaseTime => throwClipReleaseTime;
     
-    public KeyCode PlayerMoveUp => moveUp;
-    public KeyCode PlayerMoveDown => moveDown;
     public KeyCode PlayerMoveLeft => moveLeft;
     public KeyCode PlayerMoveRight => moveRight;
     public KeyCode PlayerJump => jump;

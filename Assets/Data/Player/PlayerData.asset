@@ -19,8 +19,9 @@ MonoBehaviour:
   jumpSpeed: 5
   moveSpeed: 8
   airControl: 0.4
-  moveUp: 119
-  moveDown: 115
+  maxHealth: 100
+  throwFireTime: 0.2
+  throwClipReleaseTime: 0.22
   moveLeft: 97
   moveRight: 100
   jump: 32

@@ -23,6 +23,8 @@ public class PlayerJumpState : State<PlayerContext>
             context.playerBody.linearVelocity.x,
             context.playerData.JumpSpeed
         );
+
+        context.RaiseJumped();
     }
     
     protected override void OnUpdate()

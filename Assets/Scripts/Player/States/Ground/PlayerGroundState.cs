@@ -46,6 +46,12 @@ public class PlayerGroundState : State<PlayerContext>
             return;
         }
 
+        if (currentSubState == states.Throw && states.Throw.IsFinished)
+        {
+            ChangeSubState(states.Idle);
+            return;
+        }
+
         if (currentSubState == states.Run)
         {
             ChangeSubState(states.Idle);

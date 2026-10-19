@@ -33,6 +33,11 @@ public class PlayerAirState : State<PlayerContext>
             ChangeSubState(states.Fall);
     }
 
+    protected override void OnExit()
+    {
+        context.RaiseLanded();
+    }
+
     protected override void OnFixedUpdate()
     {
         context.MoveHorizontal(context.playerData.AirControl);
