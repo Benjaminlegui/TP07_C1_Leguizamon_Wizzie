@@ -90,12 +90,6 @@ public class Player : MonoBehaviour
         );
 
         context.isGrounded = hit.collider != null;
-
-        // Debug.DrawRay(
-        //     groundCheck.position,
-        //     Vector2.down * playerSO.GroundCheckDistance,
-        //     context.isGrounded ? Color.green : Color.red
-        // );
     }
 
     private void ReadMoveInput()
