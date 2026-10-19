@@ -12,6 +12,9 @@ public class PlayerSO : ScriptableObject
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float airControl = 0.8f;
 
+    [Header("Run Animation")]
+    [SerializeField, Min(0.1f)] private float runClipReferenceSpeed = 5f;
+
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 100;
 
@@ -30,6 +33,8 @@ public class PlayerSO : ScriptableObject
     public float JumpSpeed => jumpSpeed;
     public float MoveSpeed => moveSpeed;
     public float AirControl => airControl;
+
+    public float RunClipReferenceSpeed => runClipReferenceSpeed;
 
     public int MaxHealth => maxHealth;
 

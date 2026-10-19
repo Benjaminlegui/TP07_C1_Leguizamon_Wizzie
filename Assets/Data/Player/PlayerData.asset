@@ -21,7 +21,7 @@ MonoBehaviour:
   airControl: 0.4
   maxHealth: 100
   throwFireTime: 0.2
-  throwClipReleaseTime: 0.22
+  throwClipReleaseTime: 0.7
   moveLeft: 97
   moveRight: 100
   jump: 32
