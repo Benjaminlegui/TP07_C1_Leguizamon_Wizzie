@@ -29,6 +29,14 @@ public class Health : MonoBehaviour
         if (IsDead) Died?.Invoke();
     }
 
+    public void Heal(int amount)
+    {
+        if (IsDead || amount <= 0) return;
+
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+        Changed?.Invoke();
+    }
+
     [ContextMenu("Take 10 Damage")]
     private void TakeTestDamage() => TakeDamage(10);
 }
