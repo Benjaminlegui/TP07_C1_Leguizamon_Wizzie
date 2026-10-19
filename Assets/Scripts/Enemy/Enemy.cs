@@ -10,11 +10,15 @@ public class Enemy : Spawn
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField, Min(1)] private int projectilePoolSize = 3;
 
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheck;
+
     [Header("Target")]
     [SerializeField] private Transform target;
 
     [Header("Scriptable Objects")]
     [SerializeField] private EnemySO enemySO;
+    [SerializeField] private PlayerAnimationsSO animations;
 
     public static event Action Died;
 
@@ -35,8 +39,10 @@ public class Enemy : Spawn
         {
             enemyTransform = transform,
             enemyBody = GetComponent<Rigidbody2D>(),
+            enemyAnimator = GetComponentInChildren<Animator>(),
             enemyData = enemySO,
             firePoint = firePoint,
+            groundCheck = groundCheck,
             projectilePool = new ObjectPool<Projectile>(projectilePrefab, projectilePoolSize),
             target = target != null ? target : FindTarget(),
             patrolOriginX = transform.position.x,
@@ -44,7 +50,7 @@ public class Enemy : Spawn
 
         stateMachine = new StateMachine<EnemyContext>();
 
-        states = new EnemyStateSetup(context, stateMachine);
+        states = new EnemyStateSetup(context, stateMachine, animations);
 
         stateMachine.Initialize(states.Patrol);
     }
@@ -87,6 +93,7 @@ public class Enemy : Spawn
     {
         health.Initialize(enemySO.MaxHealth);
         context.patrolOriginX = transform.position.x;
+        context.ResetAnimation();
         stateMachine.ChangeState(states.Patrol);
     }
 

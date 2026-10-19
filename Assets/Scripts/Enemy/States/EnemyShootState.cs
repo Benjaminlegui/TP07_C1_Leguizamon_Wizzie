@@ -3,15 +3,22 @@ using UnityEngine;
 public class EnemyShootState : State<EnemyContext>
 {
     private readonly EnemyStateSetup states;
+    private readonly AnimationClip shootAnimation;
+    private readonly AnimationClip idleAnimation;
     private float shootTimer;
+    private float timeSinceShot;
 
     public EnemyShootState(
         EnemyContext context,
         StateMachine<EnemyContext> stateMachine,
-        EnemyStateSetup states)
+        EnemyStateSetup states,
+        AnimationClip shootAnimation,
+        AnimationClip idleAnimation)
         : base(context, stateMachine)
     {
         this.states = states;
+        this.shootAnimation = shootAnimation;
+        this.idleAnimation = idleAnimation;
     }
 
     protected override void OnEnter()
@@ -26,6 +33,11 @@ public class EnemyShootState : State<EnemyContext>
     protected override void OnUpdate()
     {
         context.FaceTarget();
+
+        timeSinceShot += Time.deltaTime;
+
+        if (timeSinceShot >= shootAnimation.length)
+            context.PlayAnimation(idleAnimation);
 
         shootTimer -= Time.deltaTime;
 
@@ -55,5 +67,8 @@ public class EnemyShootState : State<EnemyContext>
         );
 
         projectile.Launch(context.DirectionToTarget);
+
+        timeSinceShot = 0f;
+        context.PlayAnimation(shootAnimation, true);
     }
 }

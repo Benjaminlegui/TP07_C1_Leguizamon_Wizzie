@@ -1,20 +1,27 @@
+using UnityEngine;
+
 public class EnemyPatrolState : State<EnemyContext>
 {
     private readonly EnemyStateSetup states;
+    private readonly AnimationClip walkAnimation;
     private float direction = 1f;
 
     public EnemyPatrolState(
         EnemyContext context,
         StateMachine<EnemyContext> stateMachine,
-        EnemyStateSetup states)
+        EnemyStateSetup states,
+        AnimationClip walkAnimation)
         : base(context, stateMachine)
     {
         this.states = states;
+        this.walkAnimation = walkAnimation;
     }
 
     protected override void OnEnter()
     {
+        direction = context.FacingDirection;
         context.Face(direction);
+        context.PlayAnimation(walkAnimation);
     }
 
     protected override void OnUpdate()
@@ -31,11 +38,10 @@ public class EnemyPatrolState : State<EnemyContext>
         bool reachedRight = direction > 0f && offset >= patrolDistance;
         bool reachedLeft = direction < 0f && offset <= -patrolDistance;
 
-        if (!reachedRight && !reachedLeft)
+        if (!reachedRight && !reachedLeft && context.IsGroundAhead)
             return;
 
-        direction = -direction;
-        context.Face(direction);
+        stateMachine.ChangeState(states.Idle);
     }
 
     protected override void OnFixedUpdate()

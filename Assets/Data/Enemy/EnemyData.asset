@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   maxHealth: 100
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 0.5
   moveSpeed: 2
+  patrolSpeed: 1
+  patrolDistance: 3
+  patrolWaitTime: 1
+  detectionRange: 7
+  loseRange: 10
   attackRange: 5
   shootInterval: 1
   contactDamage: 10
