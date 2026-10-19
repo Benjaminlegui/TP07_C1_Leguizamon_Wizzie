@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,9 @@ public class AudioSettingsUI : MonoBehaviour
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider effectsSlider;
-    [SerializeField] private Text masterPercentageText;
-    [SerializeField] private Text musicPercentageText;
-    [SerializeField] private Text effectsPercentageText;
+    [SerializeField] private TMP_Text masterPercentageText;
+    [SerializeField] private TMP_Text musicPercentageText;
+    [SerializeField] private TMP_Text effectsPercentageText;
 
     private void Start()
     {

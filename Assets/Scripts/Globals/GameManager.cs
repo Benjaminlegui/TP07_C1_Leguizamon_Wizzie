@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour
     {
         if (!IsPlaying) return;
         State = GameState.GameOver;
-        foreach (SpawnerBase spawner in spawners) spawner.StopSpawning();
+        foreach (SpawnerBase spawner in spawners)
+            if (spawner != null) spawner.StopSpawning();
         player.enabled = false;
+        Time.timeScale = 0f;
         Changed?.Invoke();
     }
 
