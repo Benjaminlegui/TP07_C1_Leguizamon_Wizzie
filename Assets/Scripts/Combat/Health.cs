@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
         Changed?.Invoke();
     }
 
+    // Suggestion: Método de prueba (TakeTestDamage) que quedó en la entrega. Sacalo o envolvelo en #if UNITY_EDITOR.
     [ContextMenu("Take 10 Damage")]
     private void TakeTestDamage() => TakeDamage(10);
 }

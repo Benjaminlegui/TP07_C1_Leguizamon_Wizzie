@@ -47,6 +47,8 @@ public class Projectile : Spawn
     {
         Health health = other.GetComponentInParent<Health>();
 
+        // Bug: Si lo que toca no tiene Health el proyectil sigue de largo, atraviesa paredes y suelo y puede pegarle a un enemigo detrás de una pared.
+        // Hacé Despawn también al tocar la capa Ground (chequeando other.gameObject.layer contra un LayerMask serializado).
         if (health == null)
             return;
 

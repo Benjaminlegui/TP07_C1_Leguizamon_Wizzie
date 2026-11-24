@@ -57,6 +57,8 @@ public class Enemy : Spawn
 
     private static Transform FindTarget()
     {
+        // Warning: FindFirstObjectByType recorre la escena en runtime y se llama en Awake de cada enemigo (también los del pool).
+        // Pasá el target por inspector o por EnemySpawner.OnSpawned, que ya existe para eso.
         Player player = FindFirstObjectByType<Player>();
         return player != null ? player.transform : null;
     }
@@ -69,6 +71,8 @@ public class Enemy : Spawn
         SpawnDeathEffect();
         TryDropPickup();
 
+        // Error: Enemy.Died solo lo escucha UIGameHUD, no hay feedback sonoro al eliminar un enemigo (requisito de sonido).
+        // Agregá un clip de muerte y reproducilo desde AudioGameplay al recibir este evento.
         Died?.Invoke();
         Despawn();
     }

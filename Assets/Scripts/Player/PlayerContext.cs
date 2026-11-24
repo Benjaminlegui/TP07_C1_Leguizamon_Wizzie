@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerContext
 {
+    // Warning: Todos los campos del contexto son public y mutables; cualquier estado puede pisar playerData o fireballPool.
+    // Dejá public solo lo que cambia (moveInput, isGrounded, facingDirection) y pasá las referencias fijas por constructor como readonly.
     public Rigidbody2D playerBody;
     public Animator playerAnimator;
     public PlayerSO playerData;

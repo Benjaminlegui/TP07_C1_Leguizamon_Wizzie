@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Player : MonoBehaviour
 {
+    // Suggestion: Typo en el Header, "Trasnforms" debería ser "Transforms".
     [Header("Trasnforms")]
     [SerializeField] private Transform groundCheck;
 
@@ -68,6 +69,8 @@ public class Player : MonoBehaviour
         stateMachine.Initialize(states.Grounded);
     }
     
+    // Bug: Update sigue leyendo input con Time.timeScale = 0 (panel de Settings abierto). Space dispara el estado Jump y su sonido durante la pausa,
+    // y Q deja el Throw trabado hasta reanudar. Cortá el Update si el juego está pausado (por ejemplo, if (Time.timeScale == 0f) return; o un flag de GameManager).
     private void Update()
     {
         CheckGround();

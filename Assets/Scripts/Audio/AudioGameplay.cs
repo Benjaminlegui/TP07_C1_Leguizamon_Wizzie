@@ -7,6 +7,8 @@ public class AudioGameplay : MonoBehaviour
     [SerializeField] private Player player;
 
     [Header("Audio Clips")]
+    // Error: En SampleScene.unity:802 gameplayMusic quedó en None, así que no suena música de gameplay, y jump, landing, throw y lose usan el mismo Placeholder.wav.
+    // Además esta clase no escucha Enemy.Died ni Pickup.PickedUp: faltan los sonidos de eliminar enemigo y agarrar coleccionable que pide la consigna.
     [SerializeField] private AudioClip gameplayMusic;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip landingSound;

@@ -27,6 +27,8 @@ public class PlayerGroundState : State<PlayerContext>
             return;
         }
 
+        // Warning: KeyCode.Q está hardcodeado, mientras que izquierda, derecha y salto se leen de PlayerSO.
+        // Agregá un campo throwKey en PlayerSO para que la configuración quede en un solo lugar.
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ChangeSubState(states.Throw);

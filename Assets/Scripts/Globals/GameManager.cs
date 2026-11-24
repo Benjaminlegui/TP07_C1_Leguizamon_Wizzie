@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public enum GameState { Playing, GameOver }
 
     [SerializeField] private Player player;
+    // Error: En SampleScene.unity:2712 spawners tiene un único elemento en None y EnemySpawner no está en la escena.
+    // La aceleración de spawn de EnemySpawner (única modificación de jugabilidad) nunca corre, y no hay power ups: el requisito queda sin cumplir.
     [SerializeField] private SpawnerBase[] spawners;
 
     private Health playerHealth;

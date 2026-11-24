@@ -8,6 +8,7 @@ public class EnemyStateSetup
     public EnemyStateSetup(
         EnemyContext context,
         StateMachine<EnemyContext> stateMachine,
+        // Suggestion: El enemigo usa PlayerAnimationsSO y sus clips Run y Throw. Renombrá el SO a algo genérico (CharacterAnimationsSO) para que el nombre no confunda.
         PlayerAnimationsSO animations)
     {
         Idle = new EnemyIdleState(context, stateMachine, this, animations.Idle.AnimationClip);

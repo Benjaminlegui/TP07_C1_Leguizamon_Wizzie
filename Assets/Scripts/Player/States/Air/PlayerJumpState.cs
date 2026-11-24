@@ -19,6 +19,8 @@ public class PlayerJumpState : State<PlayerContext>
         context.playerAnimator.SetFloat(JumpAnimSpeedHash, animation.length / context.RiseTime);
         context.playerAnimator.Play(animation.name);
         
+        // Warning: Esta velocidad se setea desde OnEnter, que se llama en Update. Los cambios al Rigidbody2D van en FixedUpdate;
+        // guardá un flag de salto pendiente y aplicalo en OnFixedUpdate.
         context.playerBody.linearVelocity = new Vector2(
             context.playerBody.linearVelocity.x,
             context.playerData.JumpSpeed
@@ -27,6 +29,7 @@ public class PlayerJumpState : State<PlayerContext>
         context.RaiseJumped();
     }
     
+    // Suggestion: OnUpdate y OnExit vacíos no aportan nada, la clase base ya los define vacíos. Borralos.
     protected override void OnUpdate()
     {}
 

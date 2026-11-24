@@ -17,6 +17,8 @@ public class PlayerAirState : State<PlayerContext>
         float velocityY = context.playerBody.linearVelocity.y;
         float velocityX = context.playerBody.linearVelocity.x;
         
+        // Warning: velocityX <= 0f compara con signo: al aterrizar moviéndote a la izquierda entra a Land y a la derecha a Run.
+        // Usá Mathf.Abs(velocityX) con una tolerancia (Mathf.Abs(velocityX) < 0.01f) en vez de <= 0f y != 0f.
         if (context.isGrounded && velocityY <= 0f && velocityX <= 0f)
         {
             stateMachine.ChangeState(states.Grounded, states.Land);
